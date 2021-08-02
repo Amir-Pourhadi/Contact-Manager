@@ -1,7 +1,3 @@
 export default function ContactList() {
-	return (
-		<div>
-			
-		</div>
-	)
+	return <div className="ui celled list">Contact List</div>;
 }
