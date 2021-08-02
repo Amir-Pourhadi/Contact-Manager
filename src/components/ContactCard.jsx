@@ -1,7 +1,10 @@
+import UnknownAvatar from "../images/user.png";
+
 export default function ContactCard({ contact: { id, name, email } }) {
 	return (
 		<div className="item" key={id}>
-			<div className="contact">
+			<img className="ui avatar image" src={UnknownAvatar} alt={`${name} Avatar`} />
+			<div className="content">
 				<div className="header">{name}</div>
 				<div>{email}</div>
 			</div>
