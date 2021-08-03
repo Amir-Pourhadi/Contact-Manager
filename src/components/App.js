@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import fakeContacts from "../data/contacts.json";
 import AddContact from "./AddContact";
 import "./App.css";
+import ContactDetail from "./ContactDetail";
 import ContactList from "./ContactList";
 import Header from "./Header";
 
@@ -67,6 +68,7 @@ export default function App() {
 				<Route
 					path="/addContact"
 					render={(props) => <AddContact {...props} addContactHandler={addContactHandler} />}></Route>
+				<Route path="/contact/:id" component={ContactDetail} />
 			</Switch>
 		</div>
 	);
