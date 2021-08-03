@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export default function AddContact({ addContactHandler, history: { push } }) {
@@ -52,7 +53,12 @@ export default function AddContact({ addContactHandler, history: { push } }) {
 						onChange={handleChange}
 					/>
 				</div>
-				<input type="submit" value="Add" className="ui button blue" />
+				<div style={{ display: "flex", alignItems: "baseline" }}>
+					<input type="submit" value="Add" className="ui button blue" />
+					<Link to="/" className="ui button green">
+						Back to Contact List
+					</Link>
+				</div>
 			</form>
 		</div>
 	);

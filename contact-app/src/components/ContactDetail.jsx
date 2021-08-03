@@ -20,7 +20,7 @@ export default function ContactDetail({
 				</div>
 			</div>
 			<div className="center-div">
-				<Link to="/" className="ui button blue center">
+				<Link to="/" className="ui button green center">
 					Back to Contact List
 				</Link>
 			</div>
