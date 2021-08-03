@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import UnknownAvatar from "../images/user.png";
 
@@ -6,8 +7,10 @@ export default function ContactCard({ contact: { id, name, email }, handleTrashC
 		<div className="item">
 			<img className="ui avatar image" src={UnknownAvatar} alt={`${name} Avatar`} />
 			<div className="content">
-				<div className="header">{name}</div>
-				<div>{email}</div>
+				<Link to={`/contact/${id}`}>
+					<div className="header">{name}</div>
+					<div>{email}</div>
+				</Link>
 			</div>
 			<i
 				className="trash alternate outline icon"
