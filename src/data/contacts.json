@@ -1,21 +1,17 @@
 [
 	{
-		"id": "1",
 		"name": "Bani",
 		"email": "bani@gmail.com"
 	},
 	{
-		"id": "2",
 		"name": "Amir",
 		"email": "amir@gmail.com"
 	},
 	{
-		"id": "3",
 		"name": "Benyamin",
 		"email": "benyamin@gmail.com"
 	},
 	{
-		"id": "4",
 		"name": "Alireza",
 		"email": "alireza@gmail.com"
 	}
