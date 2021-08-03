@@ -1,4 +1,4 @@
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import UnknownAvatar from "../images/user.png";
 
 export default function ContactCard({ contact: { id, name, email }, handleTrashClick }) {
@@ -16,7 +16,6 @@ export default function ContactCard({ contact: { id, name, email }, handleTrashC
 					handleTrashClick(id);
 					toast.error("❌ Contact Deleted Successfully!");
 				}}></i>
-			<ToastContainer autoClose="2000" />
 		</div>
 	);
 }
