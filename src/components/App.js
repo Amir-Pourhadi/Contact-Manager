@@ -10,6 +10,7 @@ import "./App.css";
 import ContactDetail from "./ContactDetail";
 import ContactList from "./ContactList";
 import Header from "./Header";
+import PageNotFound from "./PageNotFound";
 
 export default function App() {
 	const LOCAL_STORAGE_KEY = "contactManager.contacts";
@@ -69,6 +70,7 @@ export default function App() {
 					path="/addContact"
 					render={(props) => <AddContact {...props} addContactHandler={addContactHandler} />}></Route>
 				<Route path="/contact/:id" component={ContactDetail} />
+				<Route component={PageNotFound} />
 			</Switch>
 		</div>
 	);
