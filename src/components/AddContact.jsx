@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function AddContact({ addContactHandler }) {
 	const [contact, setContact] = useState({ name: "", email: "" });
@@ -17,8 +18,10 @@ export default function AddContact({ addContactHandler }) {
 	 */
 	const addContact = (e) => {
 		e.preventDefault();
-		if (contact.name && contact.email) addContactHandler(contact);
-		else alert("All fields are mandatory!");
+		if (contact.name && contact.email) {
+			addContactHandler(contact);
+			toast.success("✅ Contact Added Successfully!");
+		} else toast.dark("All Fields Are Mandatory! 😐");
 		setContact({ name: "", email: "" });
 	};
 
@@ -50,6 +53,7 @@ export default function AddContact({ addContactHandler }) {
 				</div>
 				<input type="submit" value="Add" className="ui button blue" />
 			</form>
+			<ToastContainer autoClose="2000" />
 		</div>
 	);
 }

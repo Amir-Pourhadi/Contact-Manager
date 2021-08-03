@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "react-toastify/dist/ReactToastify.css";
 import "semantic-ui-css/semantic.min.css";
 import { v4 as uuidv4 } from "uuid";
 import fakeContacts from "../data/contacts.json";
