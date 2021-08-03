@@ -5,12 +5,24 @@ import AddContact from "./AddContact";
 import ContactCard from "./ContactCard";
 
 export default function ContactList() {
+	const LOCAL_STORAGE_KEY = "contactManager.contacts";
 	const [contacts, setContacts] = useState(fakeContacts);
 
-	//TODO fix the bug: it is always one step behind!
+	/**
+	 * To load contacts from local storage
+	 */
 	useEffect(() => {
-		const sortedContacts = contacts.sort((a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0));
-		setContacts(sortedContacts);
+		const storedContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+		storedContacts && setContacts(storedContacts);
+	}, []);
+
+	/**
+	 * To sort contacts alphabetically and save them on local storage
+	 */
+	//TODO BUG: sorting contacts is one step behind!
+	useEffect(() => {
+		contacts.sort((a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0));
+		localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
 	}, [contacts]);
 
 	/**
