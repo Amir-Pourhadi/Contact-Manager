@@ -29,13 +29,13 @@ export default function ContactList() {
 	 * To pass contact data from children (AddContact)
 	 * @param {object} contact a single contact object with id, name, email properties
 	 */
-	const handleAddContact = (contact) => {
+	const addContactHandler = (contact) => {
 		setContacts([{ ...contact, id: uuidv4() }, ...contacts]);
 	};
 
 	return (
 		<>
-			<AddContact handleAddContact={handleAddContact} />
+			<AddContact addContactHandler={addContactHandler} />
 			<div className="ui celled list">
 				{contacts.map((contact, index) => (
 					<ContactCard contact={contact} key={index} />
