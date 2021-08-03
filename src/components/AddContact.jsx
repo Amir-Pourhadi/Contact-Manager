@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function AddContact({ addContactHandler }) {
-	const [contact, setContact] = useState({ id: "", name: "", email: "" });
+	const [contact, setContact] = useState({ name: "", email: "" });
 
 	/**
 	 * To handle input changes and update contact state
@@ -19,7 +19,7 @@ export default function AddContact({ addContactHandler }) {
 		e.preventDefault();
 		if (contact.name && contact.email) addContactHandler(contact);
 		else alert("All fields are mandatory!");
-		setContact({ id: "", name: "", email: "" });
+		setContact({ name: "", email: "" });
 	};
 
 	return (
