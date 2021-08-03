@@ -61,8 +61,12 @@ export default function App() {
 				<Route
 					path="/"
 					exact
-					component={() => <ContactList contacts={contacts} handleTrashClick={removeContactHandler} />}></Route>
-				<Route path="/addContact" component={() => <AddContact addContactHandler={addContactHandler} />}></Route>
+					render={(props) => (
+						<ContactList {...props} contacts={contacts} handleTrashClick={removeContactHandler} />
+					)}></Route>
+				<Route
+					path="/addContact"
+					render={(props) => <AddContact {...props} addContactHandler={addContactHandler} />}></Route>
 			</Switch>
 		</div>
 	);
