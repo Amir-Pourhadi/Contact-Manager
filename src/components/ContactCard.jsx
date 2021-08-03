@@ -1,6 +1,6 @@
 import UnknownAvatar from "../images/user.png";
 
-export default function ContactCard({ contact: { name, email } }) {
+export default function ContactCard({ contact: { id, name, email }, handleTrashClick }) {
 	return (
 		<div className="item">
 			<img className="ui avatar image" src={UnknownAvatar} alt={`${name} Avatar`} />
@@ -8,7 +8,10 @@ export default function ContactCard({ contact: { name, email } }) {
 				<div className="header">{name}</div>
 				<div>{email}</div>
 			</div>
-			<i className="trash alternate outline icon" style={{ color: "red", marginTop: 7 }}></i>
+			<i
+				className="trash alternate outline icon"
+				style={{ color: "red", marginTop: 7 }}
+				onClick={() => handleTrashClick(id)}></i>
 		</div>
 	);
 }

@@ -33,12 +33,21 @@ export default function ContactList() {
 		setContacts([{ ...contact, id: uuidv4() }, ...contacts]);
 	};
 
+	/**
+	 * To delete a contact
+	 * @param {string} id unique id for each contact
+	 */
+	const removeContactHandler = (id) => {
+		const newContactList = contacts.filter((contact) => contact.id !== id);
+		setContacts(newContactList);
+	};
+
 	return (
 		<>
 			<AddContact addContactHandler={addContactHandler} />
 			<div className="ui celled list">
 				{contacts.map((contact, index) => (
-					<ContactCard contact={contact} key={index} />
+					<ContactCard key={index} contact={contact} handleTrashClick={removeContactHandler} />
 				))}
 			</div>
 		</>
