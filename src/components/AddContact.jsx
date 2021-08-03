@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-export default function AddContact({ addContactHandler }) {
+export default function AddContact({ addContactHandler, history: { push } }) {
 	const [contact, setContact] = useState({ name: "", email: "" });
 
 	/**
@@ -20,6 +20,7 @@ export default function AddContact({ addContactHandler }) {
 		e.preventDefault();
 		if (contact.name && contact.email) {
 			addContactHandler(contact);
+			push("/");
 			toast.success("✅ Contact Added Successfully!");
 		} else toast.dark("All Fields Are Mandatory! 😐");
 		setContact({ name: "", email: "" });
