@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Route, Switch } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "semantic-ui-css/semantic.min.css";
 import { v4 as uuidv4 } from "uuid";
@@ -53,9 +55,15 @@ export default function App() {
 
 	return (
 		<div className="ui container">
+			<ToastContainer autoClose="2000" />
 			<Header />
-			<AddContact addContactHandler={addContactHandler} />
-			<ContactList contacts={contacts} handleTrashClick={removeContactHandler} />
+			<Switch>
+				<Route
+					path="/"
+					exact
+					component={() => <ContactList contacts={contacts} handleTrashClick={removeContactHandler} />}></Route>
+				<Route path="/addContact" component={() => <AddContact addContactHandler={addContactHandler} />}></Route>
+			</Switch>
 		</div>
 	);
 }
