@@ -7,7 +7,7 @@ export default function ContactCard({ contact: { id, name, email }, handleTrashC
 		<div className="item">
 			<img className="ui avatar image" src={UnknownAvatar} alt={`${name} Avatar`} />
 			<div className="content">
-				<Link to={`/contact/${id}`}>
+				<Link to={{ pathname: `/contact/${id}`, state: { contact: { name, email } } }}>
 					<div className="header">{name}</div>
 					<div>{email}</div>
 				</Link>
