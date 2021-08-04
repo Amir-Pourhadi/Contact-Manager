@@ -11,7 +11,7 @@
 	padding: 10px;
 }
 
-.ui.search input {
+.ui.search .input {
 	width: 100%;
 	border-radius: 0 !important;
 }
