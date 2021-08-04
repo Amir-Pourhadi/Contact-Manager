@@ -20,7 +20,8 @@
 	"scripts": {
 		"start": "run-p start:dev start:api",
 		"start:dev": "react-scripts start",
-		"start:api": "json-server -p 3001 data/contacts.json",
+		"prestart:api": "node src/api/CreateMockDB.js",
+		"start:api": "json-server -p 3001 MockDB.json",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
