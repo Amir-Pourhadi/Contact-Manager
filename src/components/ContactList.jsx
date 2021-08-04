@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import ContactCard from "./ContactCard";
+import SearchContacts from "./SearchContacts";
 
 export default function ContactList({ contacts, handleTrashClick }) {
 	const removeContactHandler = (id) => {
@@ -14,6 +15,7 @@ export default function ContactList({ contacts, handleTrashClick }) {
 					Add
 				</Link>
 			</h2>
+			<SearchContacts />
 			<div className="ui celled list">
 				{contacts.map((contact, index) => (
 					<ContactCard key={index} contact={contact} handleTrashClick={removeContactHandler} />
