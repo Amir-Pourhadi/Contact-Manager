@@ -20,7 +20,7 @@
 	"scripts": {
 		"start": "run-p start:dev start:api",
 		"start:dev": "react-scripts start",
-		"start:api": "json-server -p 3001 -w data/contacts.json",
+		"start:api": "json-server -p 3001 data/contacts.json",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
