@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "semantic-ui-css/semantic.min.css";
 import { v4 as uuidv4 } from "uuid";
-import fakeContacts from "../data/contacts.json";
+import api from "../api/Contacts";
 import AddContact from "./AddContact";
 import "./App.css";
 import ContactDetail from "./ContactDetail";
@@ -13,44 +13,67 @@ import Header from "./Header";
 import PageNotFound from "./PageNotFound";
 
 export default function App() {
-	const LOCAL_STORAGE_KEY = "contactManager.contacts";
 	/**
+	 * To set local storage key
 	 * To have random id for fakeContacts, too!
 	 */
-	fakeContacts.map((contact) => (contact.id = uuidv4()));
+	// const LOCAL_STORAGE_KEY = "contactManager.contacts";
+	// fakeContacts.map((contact) => (contact.id = uuidv4()));
 
-	const [contacts, setContacts] = useState(fakeContacts);
+	const [contacts, setContacts] = useState([]);
 
 	/**
-	 * To load contacts from local storage
+	 * To retrieve contacts from server
+	 * @returns contacts from server
+	 */
+	const retrieveContacts = async () => {
+		const { data } = await api.get("/contacts");
+		return data;
+	};
+
+	/**
+	 * To load contacts
 	 */
 	useEffect(() => {
-		const storedContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-		storedContacts && setContacts(storedContacts);
+		//* To load contacts from local storage
+		// const storedContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+		// storedContacts && setContacts(storedContacts);
+
+		//* To load contacts from server and sort alphabetically
+		const getContacts = async () => {
+			const allContacts = await retrieveContacts();
+			allContacts.sort((a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0));
+			allContacts && setContacts(allContacts);
+		};
+		getContacts();
 	}, []);
 
 	/**
-	 * To sort contacts alphabetically and save them on local storage
+	 * To save contacts on local storage
 	 */
-	//TODO BUG: sorting contacts is one step behind!
-	useEffect(() => {
-		contacts.sort((a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0));
-		localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
-	}, [contacts]);
+	// useEffect(() => {
+	// 	localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
+	// }, [contacts]);
 
 	/**
 	 * To pass contact data from children (AddContact)
 	 * @param {object} contact a single contact object with id, name, email properties
 	 */
-	const addContactHandler = (contact) => {
-		setContacts([{ ...contact, id: uuidv4() }, ...contacts]);
+	const addContactHandler = async (contact) => {
+		const request = {
+			...contact,
+			id: uuidv4()
+		};
+		const response = await api.post("/contacts", request);
+		setContacts([response.data, ...contacts]);
 	};
 
 	/**
 	 * To delete a contact
 	 * @param {string} id unique id for each contact
 	 */
-	const removeContactHandler = (id) => {
+	const removeContactHandler = async (id) => {
+		await api.delete(`/contacts/${id}`);
 		const newContactList = contacts.filter((contact) => contact.id !== id);
 		setContacts(newContactList);
 	};
