@@ -3,8 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "semantic-ui-css/semantic.min.css";
-import { v4 as uuidv4 } from "uuid";
-import api from "../api/Contacts";
+import { addContact, getContacts, removeContact } from "../api/apiUtils";
 import AddContact from "./AddContact";
 import "./App.css";
 import ContactDetail from "./ContactDetail";
@@ -13,58 +12,22 @@ import Header from "./Header";
 import PageNotFound from "./PageNotFound";
 
 export default function App() {
-	/**
-	 * To set local storage key
-	 * To have random id for fakeContacts, too!
-	 */
-	// const LOCAL_STORAGE_KEY = "contactManager.contacts";
-	// fakeContacts.map((contact) => (contact.id = uuidv4()));
-
 	const [contacts, setContacts] = useState([]);
 
 	/**
-	 * To retrieve contacts from server
-	 * @returns contacts from server
+	 * To load contacts from server
 	 */
-	const retrieveContacts = async () => {
-		const { data } = await api.get("/contacts");
-		return data;
-	};
-
-	/**
-	 * To load contacts
-	 */
-	useEffect(() => {
-		//* To load contacts from local storage
-		// const storedContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-		// storedContacts && setContacts(storedContacts);
-
-		//* To load contacts from server and sort alphabetically
-		const getContacts = async () => {
-			const allContacts = await retrieveContacts();
-			allContacts.sort((a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0));
-			allContacts && setContacts(allContacts);
-		};
-		getContacts();
+	useEffect(async () => {
+		const allContacts = await getContacts();
+		allContacts && setContacts(allContacts);
 	}, []);
 
 	/**
-	 * To save contacts on local storage
-	 */
-	// useEffect(() => {
-	// 	localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
-	// }, [contacts]);
-
-	/**
 	 * To pass contact data from children (AddContact)
-	 * @param {object} contact a single contact object with id, name, email properties
+	 * @param {object} contact a single contact object
 	 */
 	const addContactHandler = async (contact) => {
-		const request = {
-			...contact,
-			id: uuidv4()
-		};
-		const response = await api.post("/contacts", request);
+		const response = await addContact(contact);
 		setContacts([response.data, ...contacts]);
 	};
 
@@ -73,9 +36,8 @@ export default function App() {
 	 * @param {string} id unique id for each contact
 	 */
 	const removeContactHandler = async (id) => {
-		await api.delete(`/contacts/${id}`);
-		const newContactList = contacts.filter((contact) => contact.id !== id);
-		setContacts(newContactList);
+		await removeContact(id);
+		setContacts(contacts.filter((contact) => contact.id !== id));
 	};
 
 	return (
