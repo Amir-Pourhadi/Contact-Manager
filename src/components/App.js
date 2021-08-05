@@ -42,7 +42,7 @@ export default function App() {
 
 	return (
 		<div className="ui container">
-			<ToastContainer autoClose="2000" position="bottom-right" />
+			<ToastContainer autoClose="2000" position="bottom-right" closeButton="false" />
 			<Header />
 			<Switch>
 				<Route
