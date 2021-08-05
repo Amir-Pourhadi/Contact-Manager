@@ -3,6 +3,10 @@ import ContactCard from "./ContactCard";
 import SearchContacts from "./SearchContacts";
 
 export default function ContactList({ contacts, handleTrashClick }) {
+	/**
+	 * To handle trash icon click
+	 * @param {number} id Contact id
+	 */
 	const removeContactHandler = (id) => {
 		handleTrashClick(id);
 	};
@@ -15,7 +19,7 @@ export default function ContactList({ contacts, handleTrashClick }) {
 					Add
 				</Link>
 			</h2>
-			<SearchContacts />
+			<SearchContacts contacts={contacts} />
 			<div className="ui celled list">
 				{contacts.map((contact, index) => (
 					<ContactCard key={index} contact={contact} handleTrashClick={removeContactHandler} />
