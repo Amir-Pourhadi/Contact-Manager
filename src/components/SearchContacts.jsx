@@ -4,13 +4,15 @@ export default function ({ contacts }) {
 	const [search, setSearch] = useState("");
 	const inputEl = useRef("");
 
-	const handleSearch = () => {
+	const handleSearch = (e) => {
+		e.preventDefault();
 		setSearch(inputEl.current.value);
+		console.log(search);
 	};
 
 	return (
 		<div className="ui search">
-			<div className="ui icon input">
+			<form className="ui icon input" onSubmit={handleSearch}>
 				<input
 					type="text"
 					className="prompt"
@@ -20,7 +22,7 @@ export default function ({ contacts }) {
 					ref={inputEl}
 				/>
 				<i className="search icon"></i>
-			</div>
+			</form>
 		</div>
 	);
 }

@@ -16,18 +16,18 @@ body {
 	padding: 10px;
 }
 
-.ui.search .input {
+.search .input {
 	width: 100%;
-	border-radius: 0 !important;
 }
 
 .item {
 	padding: 15px 0px !important;
+	font-size: large;
 }
 
 i.icon {
 	float: right;
-	font-size: 20px;
+	font-size: 23px;
 	cursor: pointer;
 }
 
@@ -74,6 +74,25 @@ footer a:hover {
 footer .icon {
 	font-size: 25px;
 	margin-left: 7px;
+}
+
+@media screen and (max-width: 768px) {
+	footer {
+		height: 9vh;
+	}
+
+	footer ul {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	footer ul li:nth-last-child(1) {
+		display: none;
+	}
+
+	.contacts-list {
+		height: 65vh;
+	}
 }
 
 .page_404 {
