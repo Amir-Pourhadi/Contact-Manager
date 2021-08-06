@@ -8,6 +8,7 @@ import AddContact from "./AddContact";
 import "./App.css";
 import ContactDetail from "./ContactDetail";
 import ContactList from "./ContactList";
+import Footer from "./Footer";
 import Header from "./Header";
 import PageNotFound from "./PageNotFound";
 
@@ -41,22 +42,25 @@ export default function App() {
 	};
 
 	return (
-		<div className="ui container">
+		<>
 			<ToastContainer autoClose="2000" position="bottom-right" closeButton="false" />
 			<Header />
-			<Switch>
-				<Route
-					path="/"
-					exact
-					render={(props) => (
-						<ContactList {...props} contacts={contacts} handleTrashClick={removeContactHandler} />
-					)}></Route>
-				<Route
-					path="/addContact"
-					render={(props) => <AddContact {...props} addContactHandler={addContactHandler} />}></Route>
-				<Route path="/contact/:id" component={ContactDetail} />
-				<Route component={PageNotFound} />
-			</Switch>
-		</div>
+			<div className="ui container">
+				<Switch>
+					<Route
+						path="/"
+						exact
+						render={(props) => (
+							<ContactList {...props} contacts={contacts} handleTrashClick={removeContactHandler} />
+						)}></Route>
+					<Route
+						path="/addContact"
+						render={(props) => <AddContact {...props} addContactHandler={addContactHandler} />}></Route>
+					<Route path="/contact/:id" component={ContactDetail} />
+					<Route component={PageNotFound} />
+				</Switch>
+			</div>
+			<Footer />
+		</>
 	);
 }
