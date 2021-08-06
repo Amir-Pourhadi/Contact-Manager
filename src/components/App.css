@@ -2,8 +2,13 @@
 	user-select: none;
 }
 
+body {
+	height: 0;
+}
+
 .main {
 	margin-top: 5em;
+	margin-bottom: 5em;
 }
 
 .center {
@@ -34,20 +39,26 @@ i.icon {
 	text-align: center;
 }
 
+.contacts-list {
+	height: 72vh;
+	overflow: auto;
+}
+
 footer {
 	position: fixed;
 	bottom: 0;
 	width: 100%;
 	height: 5vh;
 	background: #6c757d;
+	border-radius: 25px 25px 0 0;
 }
 
 footer ul {
-	position: relative;
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-evenly;
 	font-size: larger;
 	font-weight: bold;
+	padding: 0;
 	margin: 10px;
 	list-style: none;
 }
@@ -58,6 +69,11 @@ footer a {
 
 footer a:hover {
 	color: #161b22;
+}
+
+footer .icon {
+	font-size: 25px;
+	margin-left: 7px;
 }
 
 .page_404 {

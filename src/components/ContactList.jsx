@@ -20,7 +20,7 @@ export default function ContactList({ contacts, handleTrashClick }) {
 				</Link>
 			</h2>
 			<SearchContacts contacts={contacts} />
-			<div className="ui celled list">
+			<div className="ui celled list contacts-list">
 				{contacts.map((contact, index) => (
 					<ContactCard key={index} contact={contact} handleTrashClick={removeContactHandler} />
 				))}
