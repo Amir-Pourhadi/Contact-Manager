@@ -59,3 +59,14 @@ footer a {
 footer a:hover {
 	color: #161b22;
 }
+
+.page_404 {
+	background: #fff;
+	font-family: "Arvo", serif;
+}
+
+.background {
+	background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+	height: 500px;
+	background-position: center;
+}
