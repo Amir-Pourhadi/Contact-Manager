@@ -35,7 +35,7 @@ export default function EditContact(props) {
 			push("/");
 			toast.success("✅ Contact Edited Successfully!");
 		} else toast.dark("All Fields Are Mandatory! 😐");
-		setContact({ name: "", email: "" });
+		setContact({ name, email, id });
 	};
 
 	return (
