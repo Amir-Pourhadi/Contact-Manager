@@ -3,11 +3,12 @@ import { Route, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "semantic-ui-css/semantic.min.css";
-import { addContact, getContacts, removeContact } from "../api/apiUtils";
+import { addContact, getContacts, removeContact, updateContact } from "../api/apiUtils";
 import AddContact from "./AddContact";
 import "./App.css";
 import ContactDetail from "./ContactDetail";
 import ContactList from "./ContactList";
+import EditContact from "./EditContact";
 import Footer from "./Footer";
 import Header from "./Header";
 import PageNotFound from "./PageNotFound";
@@ -30,6 +31,15 @@ export default function App() {
 	const addContactHandler = async (contact) => {
 		const response = await addContact(contact);
 		setContacts([response.data, ...contacts]);
+	};
+
+	/**
+	 * To edit a contact
+	 * @param {object} contact a single contact object
+	 */
+	const updateContactHandler = async (contact) => {
+		const response = await updateContact(contact);
+		setContacts(contacts.map((contact) => (contact.id === response.data.id ? response.data : contact)));
 	};
 
 	/**
@@ -57,6 +67,9 @@ export default function App() {
 						path="/addContact"
 						render={(props) => <AddContact {...props} addContactHandler={addContactHandler} />}></Route>
 					<Route path="/contact/:id" component={ContactDetail} />
+					<Route
+						path="/edit/:id"
+						render={(props) => <EditContact {...props} updateContactHandler={updateContactHandler} />}></Route>
 					<Route component={PageNotFound} />
 				</Switch>
 			</div>
