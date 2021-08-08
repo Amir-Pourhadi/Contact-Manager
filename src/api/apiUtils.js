@@ -19,6 +19,14 @@ export const addContact = async (contact) => {
 };
 
 /**
+ * To update a contact
+ * @param {object} contact a single contact object with id, name, email properties
+ */
+export const updateContact = async (contact) => {
+	return await api.put(`/contacts/${contact.id}`, contact);
+};
+
+/**
  * To delete a contact
  * @param {string} id unique id for each contact
  */
