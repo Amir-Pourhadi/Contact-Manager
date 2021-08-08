@@ -14,11 +14,14 @@ export default function ContactCard({ contact: { id, name, email }, handleTrashC
 			</div>
 			<i
 				className="trash alternate outline icon"
-				style={{ color: "red", marginTop: 7 }}
+				style={{ color: "red", marginTop: 7, marginLeft: 10 }}
 				onClick={() => {
 					handleTrashClick(id);
 					toast.error("❌ Contact Deleted Successfully!");
 				}}></i>
+			<Link to={{ pathname: `/edit/${id}`, state: { contact: { id, name, email } } }}>
+				<i className="edit alternate outline icon" style={{ color: "blue", marginTop: 7 }}></i>
+			</Link>
 		</div>
 	);
 }
