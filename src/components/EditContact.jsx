@@ -14,7 +14,7 @@ export default function EditContact(props) {
 		history: { push }
 	} = props;
 
-	const [contact, setContact] = useState({ id, name, email });
+	const [contact, setContact] = useState({ name, email, id });
 
 	/**
 	 * To handle input changes and update contact state
