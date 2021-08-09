@@ -15,6 +15,8 @@ import PageNotFound from "./PageNotFound";
 
 export default function App() {
 	const [contacts, setContacts] = useState([]);
+	const [searchInput, setSearchInput] = useState("");
+	const [searchResults, setSearchResults] = useState([]);
 
 	/**
 	 * To load contacts from server
@@ -51,17 +53,34 @@ export default function App() {
 		setContacts(contacts.filter((contact) => contact.id !== id));
 	};
 
+	const handleSearch = (searchInput) => {
+		setSearchInput(searchInput);
+		setSearchResults(
+			searchInput !== ""
+				? contacts.filter((contact) =>
+						Object.values(contact).join(" ").toLowerCase().includes(searchInput.toLowerCase())
+				  )
+				: contacts
+		);
+	};
+
 	return (
 		<>
 			<ToastContainer autoClose="2000" position="bottom-right" closeButton="false" />
 			<Header />
-			<div className="ui container">
+			<main className="ui container">
 				<Switch>
 					<Route
 						path="/"
 						exact
 						render={(props) => (
-							<ContactList {...props} contacts={contacts} handleTrashClick={removeContactHandler} />
+							<ContactList
+								{...props}
+								contacts={searchInput.length < 1 ? contacts : searchResults}
+								handleTrashClick={removeContactHandler}
+								searchInput={searchInput}
+								handleSearch={handleSearch}
+							/>
 						)}></Route>
 					<Route
 						path="/addContact"
@@ -72,7 +91,7 @@ export default function App() {
 						render={(props) => <EditContact {...props} updateContactHandler={updateContactHandler} />}></Route>
 					<Route component={PageNotFound} />
 				</Switch>
-			</div>
+			</main>
 			<Footer />
 		</>
 	);
