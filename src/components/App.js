@@ -27,7 +27,7 @@ export default function App() {
 	}, []);
 
 	/**
-	 * To pass contact data from children (AddContact)
+	 * To add new contact
 	 * @param {object} contact a single contact object
 	 */
 	const addContactHandler = async (contact) => {
