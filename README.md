@@ -1,4 +1,13 @@
-[![wakatime](https://wakatime.com/badge/github/Amir-Pourhadi/Contact-Manager.svg)](https://wakatime.com/badge/github/Amir-Pourhadi/Contact-Manager)
+<div align="center">
+
+  [![wakatime](https://wakatime.com/badge/github/Amir-Pourhadi/Contact-Manager.svg)](https://wakatime.com/badge/github/Amir-Pourhadi/Contact-Manager)
+  [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=Amir-Pourhadi_Contact-Manager&metric=ncloc)](https://sonarcloud.io/dashboard?id=Amir-Pourhadi_Contact-Manager)
+  [![CodeFactor](https://www.codefactor.io/repository/github/amir-pourhadi/contact-manager/badge)](https://www.codefactor.io/repository/github/amir-pourhadi/contact-manager)  
+  [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Amir-Pourhadi_Contact-Manager&metric=alert_status)](https://sonarcloud.io/dashboard?id=Amir-Pourhadi_Contact-Manager)
+  [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Amir-Pourhadi_Contact-Manager&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=Amir-Pourhadi_Contact-Manager)
+  [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Amir-Pourhadi_Contact-Manager&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=Amir-Pourhadi_Contact-Manager)
+  [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Amir-Pourhadi_Contact-Manager&metric=security_rating)](https://sonarcloud.io/dashboard?id=Amir-Pourhadi_Contact-Manager)
+</div>
 
 # Getting Started with Create React App
 
