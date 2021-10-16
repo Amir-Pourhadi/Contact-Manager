@@ -9,6 +9,9 @@
   [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Amir-Pourhadi_Contact-Manager&metric=security_rating)](https://sonarcloud.io/dashboard?id=Amir-Pourhadi_Contact-Manager)
 </div>
 
+# Contact Manager
+A Contact Manager Website to Practice React! Learned from a Tutorial!
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
